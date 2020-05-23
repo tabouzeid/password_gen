@@ -85,6 +85,30 @@ function generateCharacterAllocation(passwordDetails){
   return dist;
 }
 
+function generatePassword(passwordDetails) {
+  if(!passwordDetails.isValid()){
+    return false;
+  }
+  var dist = generateCharacterAllocation(passwordDetails);
+
+  var generated = "";
+  for(var index = 0; generated.length < passwordDetails.passwordLength; index = (index + 1) % dist.length){
+    if (dist[index] > 0){
+      if(index == 0) {
+        generated = generated + genRandom('A', 26);
+      } else if (index == 1) {
+        generated = generated + genRandom('a', 26);
+      } else if (index == 2) {
+        generated = generated + (Math.floor(Math.random()*10));
+      } else {
+        generated = generated + specialChars[(Math.floor(Math.random() * specialChars.length))];
+      }
+      dist[index]-=1;
+    }
+  }
+  return generated;
+}
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
