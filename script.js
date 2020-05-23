@@ -6,6 +6,10 @@ var lowerCaseCheckbox = document.querySelector("#lowercase-check");
 var numbersCheckbox = document.querySelector("#numbers-check");
 var specialCaseCheckbox = document.querySelector("#specchars-check");
 
+var specialChars = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.',
+                    '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{',
+                    '|','}','~'];
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
