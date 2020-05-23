@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Password Generator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -19,17 +22,47 @@
         <div class="card-body">
           <textarea
             readonly
+            style="font-size: 35px;"
             id="password"
             placeholder="Your Secure Password"
             aria-label="Generated Password"
           ></textarea>
         </div>
         <div class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
+          <button id="generate" type="button" class="btn" data-toggle="modal" data-target="#myModal">Generate Password</button>
+          
+          <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">          
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Password Details</h4>
+                </div>
+                <div class="modal-body text-left">
+                  <label for="pwd">Password Length:</label>
+                  <input type="text" id="passLength"/>
+                  <div class="checkbox">
+                    <label><input type="checkbox" value="" id="uppercase-check"/>Uppercase Letters</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><input type="checkbox" value="" id="lowercase-check"/>Lowercase Letters</label>
+                  </div>
+                  <div class="checkbox disabled">
+                    <label><input type="checkbox" value="" id="numbers-check"/>Numbers</label>
+                  </div>
+                  <div class="checkbox disabled">
+                    <label><input type="checkbox" value="" id="specchars-check"/>Special Characters</label>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" id="modelButton" class="btn btn-default" data-dismiss="modal">Go!</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <script src="script.js"></script>
   </body>
 </html>
-
