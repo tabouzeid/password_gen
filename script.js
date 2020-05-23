@@ -58,6 +58,33 @@ function genRandom(start, range){
   return String.fromCharCode(start.charCodeAt(0) + inc);
 }
 
+function generateCharacterAllocation(passwordDetails){
+  var dist = [0,0,0,0];
+  var includeChars = [passwordDetails.includeUpperCase,
+                      passwordDetails.includeLowerCase,
+                      passwordDetails.includeNumbers,
+                      passwordDetails.includeSpecialCase];
+  var assigned = 0;
+  var v = 0;
+  for(index = 0; index < includeChars.length; index++){
+    if(includeChars[index]){
+      if(v == passwordDetails.selectedAttNum-1){
+        dist[index] = (passwordDetails.passwordLength-assigned);
+        assigned+=dist[index];
+      } else {
+        var max = ((passwordDetails.passwordLength-assigned) - (passwordDetails.selectedAttNum - ++v));
+        dist[index] = Math.ceil(Math.random() * max);
+        if(dist[index] == 0){
+          dist[index] = 1;
+        }
+        assigned+=dist[index];
+      }
+    }
+  }
+
+  return dist;
+}
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
