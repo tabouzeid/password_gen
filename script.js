@@ -53,6 +53,11 @@ function getPasswordDetails(){
   }
 }
 
+function genRandom(start, range){
+  var inc = Math.floor(Math.random() * range);
+  return String.fromCharCode(start.charCodeAt(0) + inc);
+}
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
