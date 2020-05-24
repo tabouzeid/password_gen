@@ -111,13 +111,13 @@ function generatePassword(passwordDetails) {
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var passDetails = getPasswordDetails()
+  var password = generatePassword(passDetails);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+modalButton.addEventListener("click", writePassword);
 
